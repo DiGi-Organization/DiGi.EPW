@@ -41,8 +41,9 @@ namespace DiGi.EPW.Classes
         [JsonInclude, JsonPropertyName(nameof(DaysSinceLastSnowfall))]
         private readonly int daysSinceLastSnowfall = 0;
 
-        [JsonInclude, JsonPropertyName(nameof(Albedo))]
-        private readonly float albedo = 0;
+        // Albedo is stored by the base WeatherRecord under the same wire name "Albedo", so the epw_file rows written
+        // while this class declared it read back into the base field. Declaring it here again would make the DiGi
+        // serializer fill only this level and leave WeatherRecord.Albedo at 0 (Coding - General.md §5.7).
 
         [JsonInclude, JsonPropertyName(nameof(LiquidPrecipitationDepth))]
         private readonly float liquidPrecipitationDepth = 0;
@@ -81,7 +82,7 @@ namespace DiGi.EPW.Classes
         /// <param name="aerosolOpticalDepth">The aerosol optical depth, in thousandths.</param>
         /// <param name="snowDepth">The snow depth, in cm.</param>
         /// <param name="daysSinceLastSnowfall">The number of days since the last snowfall.</param>
-        /// <param name="albedo">The albedo.</param>
+        /// <param name="albedo">The albedo, dimensionless; stored by the base <see cref="Weather.Classes.WeatherRecord"/>.</param>
         /// <param name="liquidPrecipitationDepth">The liquid precipitation depth, in mm.</param>
         /// <param name="liquidPrecipitationQuantity">The liquid precipitation quantity, in hours.</param>
         public DataRecord(
@@ -159,7 +160,6 @@ namespace DiGi.EPW.Classes
             this.precipitableWater = precipitableWater;
             this.aerosolOpticalDepth = aerosolOpticalDepth;
             this.daysSinceLastSnowfall = daysSinceLastSnowfall;
-            this.albedo = albedo;
             this.liquidPrecipitationDepth = liquidPrecipitationDepth;
             this.liquidPrecipitationQuantity = liquidPrecipitationQuantity;
         }
@@ -183,7 +183,6 @@ namespace DiGi.EPW.Classes
                 precipitableWater = dataRecord.precipitableWater;
                 aerosolOpticalDepth = dataRecord.aerosolOpticalDepth;
                 daysSinceLastSnowfall = dataRecord.daysSinceLastSnowfall;
-                albedo = dataRecord.albedo;
                 liquidPrecipitationDepth = dataRecord.liquidPrecipitationDepth;
                 liquidPrecipitationQuantity = dataRecord.liquidPrecipitationQuantity;
             }
@@ -315,18 +314,6 @@ namespace DiGi.EPW.Classes
             get
             {
                 return daysSinceLastSnowfall;
-            }
-        }
-
-        /// <summary>
-        /// Gets the albedo, dimensionless, as recorded in the EPW file. A raw value equal to <see cref="Constants.MissingValue.Albedo"/> (999) marks a missing reading rather than a measurement.
-        /// </summary>
-        [JsonIgnore]
-        public float Albedo
-        {
-            get
-            {
-                return albedo;
             }
         }
 

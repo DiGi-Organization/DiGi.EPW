@@ -355,7 +355,7 @@ The number of days since the last snowfall\.
 
 `albedo` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
 
-The albedo\.
+The albedo, dimensionless; stored by the base [DiGi\.Weather\.Classes\.WeatherRecord](https://learn.microsoft.com/en-us/dotnet/api/digi.weather.classes.weatherrecord 'DiGi\.Weather\.Classes\.WeatherRecord')\.
 
 <a name='DiGi.EPW.Classes.DataRecord.DataRecord(System.DateTime,string,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float,int,int,float,float,int,string,float,float,float,int,float,float,float).liquidPrecipitationDepth'></a>
 
@@ -395,19 +395,6 @@ Gets the aerosol optical depth, in thousandths\.
 
 ```csharp
 public float AerosolOpticalDepth { get; }
-```
-
-#### Property Value
-[System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
-
-<a name='DiGi.EPW.Classes.DataRecord.Albedo'></a>
-
-## DataRecord\.Albedo Property
-
-Gets the albedo, dimensionless, as recorded in the EPW file\. A raw value equal to [Albedo](DiGi.EPW.Constants.md#DiGi.EPW.Constants.MissingValue.Albedo 'DiGi\.EPW\.Constants\.MissingValue\.Albedo') \(999\) marks a missing reading rather than a measurement\.
-
-```csharp
-public float Albedo { get; }
 ```
 
 #### Property Value

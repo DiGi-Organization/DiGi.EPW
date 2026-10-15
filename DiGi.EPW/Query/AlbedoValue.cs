@@ -7,7 +7,7 @@ namespace DiGi.EPW
     {
         /// <summary>
         /// Gets the measured albedo, dimensionless, of the given hourly data record.
-        /// <para>Returns null when the raw <see cref="DataRecord.Albedo"/> equals the EPW missing-value marker <see cref="Constants.MissingValue.Albedo"/> (999), so a missing reading is distinguishable from a measurement without comparing against a magic number. A raw value of 0 is not a marker and is returned as is; deciding whether a zero albedo is usable belongs to the consumer.</para>
+        /// <para>Returns null when the raw <see cref="Weather.Classes.WeatherRecord.Albedo"/> (stored by the base record) equals the EPW missing-value marker <see cref="Constants.MissingValue.Albedo"/> (999), so a missing reading is distinguishable from a measurement without comparing against a magic number. A raw value of 0 is not a marker and is returned as is; deciding whether a zero albedo is usable belongs to the consumer.</para>
         /// </summary>
         /// <param name="dataRecord">The hourly data record to query.</param>
         /// <returns>The measured albedo, dimensionless, or null when the reading is missing.</returns>

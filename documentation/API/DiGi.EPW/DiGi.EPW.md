@@ -617,7 +617,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 Gets the measured albedo, dimensionless, of the given hourly data record\.
 
-Returns null when the raw [Albedo](DiGi.EPW.Classes.md#DiGi.EPW.Classes.DataRecord.Albedo 'DiGi\.EPW\.Classes\.DataRecord\.Albedo') equals the EPW missing-value marker [Albedo](DiGi.EPW.Constants.md#DiGi.EPW.Constants.MissingValue.Albedo 'DiGi\.EPW\.Constants\.MissingValue\.Albedo') (999), so a missing reading is distinguishable from a measurement without comparing against a magic number. A raw value of 0 is not a marker and is returned as is; deciding whether a zero albedo is usable belongs to the consumer.
+Returns null when the raw [DiGi\.Weather\.Classes\.WeatherRecord\.Albedo](https://learn.microsoft.com/en-us/dotnet/api/digi.weather.classes.weatherrecord.albedo 'DiGi\.Weather\.Classes\.WeatherRecord\.Albedo') (stored by the base record) equals the EPW missing-value marker [Albedo](DiGi.EPW.Constants.md#DiGi.EPW.Constants.MissingValue.Albedo 'DiGi\.EPW\.Constants\.MissingValue\.Albedo') (999), so a missing reading is distinguishable from a measurement without comparing against a magic number. A raw value of 0 is not a marker and is returned as is; deciding whether a zero albedo is usable belongs to the consumer.
 
 ```csharp
 public static System.Nullable<float> AlbedoValue(this DiGi.EPW.Classes.DataRecord dataRecord);

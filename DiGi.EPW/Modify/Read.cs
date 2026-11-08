@@ -1,5 +1,6 @@
 using DiGi.EPW.Classes;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace DiGi.EPW
 {
@@ -40,50 +41,50 @@ namespace DiGi.EPW
             {
                 string line = lines[index].Trim();
 
-                string line_Upper = line.ToUpper();
+                string line_Upper = line.ToUpper(CultureInfo.CurrentCulture);
 
-                if (line_Upper.StartsWith("!") || line_Upper.StartsWith("\\"))
+                if (line_Upper.StartsWith("!", StringComparison.CurrentCulture) || line_Upper.StartsWith("\\", StringComparison.CurrentCulture))
                 {
                     index++;
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.Location))
+                if (line_Upper.StartsWith(Constants.HeaderName.Location, StringComparison.CurrentCulture))
                 {
                     location = Create.Location(lines, index, out int index_Next);
                     index = index_Next != -1 ? index_Next : index + 1;
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.DesignConditions))
+                if (line_Upper.StartsWith(Constants.HeaderName.DesignConditions, StringComparison.CurrentCulture))
                 {
                     designConditions = Create.DesignConditions(lines, index, out int index_Next);
                     index = index_Next != -1 ? index_Next : index + 1;
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.TypicalExtremePeriods))
+                if (line_Upper.StartsWith(Constants.HeaderName.TypicalExtremePeriods, StringComparison.CurrentCulture))
                 {
                     typicalExtremePeriods = Create.TypicalExtremePeriods(lines, index, out int index_Next);
                     index = index_Next != -1 ? index_Next : index + 1;
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.GroundTemperatures))
+                if (line_Upper.StartsWith(Constants.HeaderName.GroundTemperatures, StringComparison.CurrentCulture))
                 {
                     groundTemperatures = Create.GroundTemperatures(lines, index, out int index_Next);
                     index = index_Next != -1 ? index_Next : index + 1;
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.HolidaysDaylightSavings))
+                if (line_Upper.StartsWith(Constants.HeaderName.HolidaysDaylightSavings, StringComparison.CurrentCulture))
                 {
                     holidaysDaylightSaving = Create.HolidaysDaylightSaving(lines, index, out int index_Next);
                     index = index_Next != -1 ? index_Next : index + 1;
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.Comments1))
+                if (line_Upper.StartsWith(Constants.HeaderName.Comments1, StringComparison.CurrentCulture))
                 {
                     int index_Comma = line.IndexOf(',');
                     comments1 = index_Comma != -1 ? line.Substring(index_Comma + 1).Trim().Trim('"') : null;
@@ -91,7 +92,7 @@ namespace DiGi.EPW
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.Comments2))
+                if (line_Upper.StartsWith(Constants.HeaderName.Comments2, StringComparison.CurrentCulture))
                 {
                     int index_Comma = line.IndexOf(',');
                     comments2 = index_Comma != -1 ? line.Substring(index_Comma + 1).Trim().Trim('"') : null;
@@ -99,7 +100,7 @@ namespace DiGi.EPW
                     continue;
                 }
 
-                if (line_Upper.StartsWith(Constants.HeaderName.DataPeriods))
+                if (line_Upper.StartsWith(Constants.HeaderName.DataPeriods, StringComparison.CurrentCulture))
                 {
                     dataPeriods = Create.DataPeriods(lines, index, out int recordsPerHour_Temp, out int index_Next);
                     index = index_Next != -1 ? index_Next : index + 1;

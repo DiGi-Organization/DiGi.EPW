@@ -1,5 +1,6 @@
 using DiGi.EPW.Classes;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace DiGi.EPW
 {
@@ -18,7 +19,7 @@ namespace DiGi.EPW
                 return null;
             }
 
-            string[] paths = System.IO.Directory.GetFiles(directory, string.Format("*.{0}", Constants.FileExtension.EPWFile), searchOption);
+            string[] paths = System.IO.Directory.GetFiles(directory, string.Format(CultureInfo.CurrentCulture, "*.{0}", Constants.FileExtension.EPWFile), searchOption);
             if (paths == null || paths.Length == 0)
             {
                 return null;

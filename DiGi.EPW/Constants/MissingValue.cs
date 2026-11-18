@@ -6,6 +6,12 @@ namespace DiGi.EPW.Constants
     public static class MissingValue
     {
         /// <summary>
+        /// The value 99.9 that marks a missing dry bulb temperature reading, in °C, in an EPW file (DiGi-Organization/DiGi.Weather#4).
+        /// <para>The <c>\missing 99.9</c> of field N6 in the EnergyPlus Weather File (EPW) Data Dictionary (EnergyPlus 9.0 Auxiliary Programs); identical to <c>DiGi.Weather.Constants.MissingValue.DryBulbTemperature</c>.</para>
+        /// </summary>
+        public const float DryBulbTemperature = 99.9f;
+
+        /// <summary>
         /// The value 9999 that marks a missing global horizontal radiation reading in an EPW file.
         /// </summary>
         public const float GlobalHorizontalRadiation = 9999;

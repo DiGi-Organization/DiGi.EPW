@@ -695,6 +695,34 @@ The measured direct normal radiation, in Wh/m2, or null when the reading is miss
 [System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 Thrown when the provided data record is null\.
 
+<a name='DiGi.EPW.Query.DryBulbTemperatureValue(thisDiGi.EPW.Classes.DataRecord)'></a>
+
+## Query\.DryBulbTemperatureValue\(this DataRecord\) Method
+
+Gets the measured dry bulb temperature, in °C, of the given hourly data record \(DiGi\-Organization/DiGi\.Weather\#4\)\.
+
+Returns null when the raw [DiGi\.Weather\.Classes\.WeatherRecord\.DryBulbTemperature](https://learn.microsoft.com/en-us/dotnet/api/digi.weather.classes.weatherrecord.drybulbtemperature 'DiGi\.Weather\.Classes\.WeatherRecord\.DryBulbTemperature') equals the EPW missing-value marker [DryBulbTemperature](DiGi.EPW.Constants.md#DiGi.EPW.Constants.MissingValue.DryBulbTemperature 'DiGi\.EPW\.Constants\.MissingValue\.DryBulbTemperature') (99.9) or is NaN, so a missing reading is distinguishable from a measurement without comparing against a magic number.
+
+```csharp
+public static System.Nullable<float> DryBulbTemperatureValue(this DiGi.EPW.Classes.DataRecord dataRecord);
+```
+#### Parameters
+
+<a name='DiGi.EPW.Query.DryBulbTemperatureValue(thisDiGi.EPW.Classes.DataRecord).dataRecord'></a>
+
+`dataRecord` [DataRecord](DiGi.EPW.Classes.md#DiGi.EPW.Classes.DataRecord 'DiGi\.EPW\.Classes\.DataRecord')
+
+The hourly data record to query\.
+
+#### Returns
+[System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')  
+The measured dry bulb temperature, in °C, or null when the reading is missing\.
+
+#### Exceptions
+
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
+Thrown when the provided data record is null\.
+
 <a name='DiGi.EPW.Query.GlobalHorizontalRadiationValue(thisDiGi.EPW.Classes.DataRecord)'></a>
 
 ## Query\.GlobalHorizontalRadiationValue\(this DataRecord\) Method
